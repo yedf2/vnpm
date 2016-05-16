@@ -1,0 +1,31 @@
+{
+    "name": "vnpm",
+    "version": "1.0.10",
+    "description": "version publish for npm, sync ali mirror",
+    "main": "./vnpm.js",
+    "bin": {
+        "vnpm": "./vnpm",
+        "cd-run": "./cd-run",
+        "watch-run": "./watch-run"
+    },
+    "files": [
+        "*"
+    ],
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/yedf/rest-mysql.git"
+    },
+    "keywords": [
+        "version",
+        "npm"
+    ],
+    "author": "dongfuye@163.com",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/yedf/rest-mysql/issues"
+    },
+    "homepage": "https://github.com/yedf/rest-mysql#readme"
+}

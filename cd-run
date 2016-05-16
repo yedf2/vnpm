@@ -1,0 +1,5 @@
+#!/bin/bash
+[ x$2 == x ] && echo 'usage <path> <cmd> [... cmd args]'
+cd $1
+shift
+$*
