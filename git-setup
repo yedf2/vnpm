@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+cdir=`pwd`
+gdir=$cdir
+file=$gdir/.git/hooks/post-receive
+[ x$1 = x ] && branch=master || branch=$1
+
+
+cat > $file << EOF
+#!/bin/bash
+while read oldrev newrev ref
+do
+    if [[ \$ref =~ .*/$branch\$ ]];
+    then
+        echo "$branch ref received.  Deploying $branch branch to production..."
+        git --work-tree=$gdir checkout -f
+        cd $cdir;
+        [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+        [ -s "node-env.conf" ] && . ~/node-env.conf
+        nohup npm run post-receive >> /tmp/t.log 2>&1 &
+
+    else
+        echo "Ref \$ref successfully received.  Doing nothing: only the $branch branch may be deployed on this server."
+    fi
+done
+
+EOF
+
+chmod a+x $file
+
+echo '[receive]' >> $gdir/.git/config
+echo '          denyCurrentBranch=false' >> $gdir/.git/config
