@@ -14,6 +14,7 @@ do
         echo "$branch ref received.  Deploying $branch branch to production..."
         git --work-tree=$gdir checkout -f
         cd $cdir;
+        echo \`date '+%Y-%m-%d %H:%M:%S'\` '    deployed    ' \$newrev >> deploy.log 2>&1
         [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
         [ -s "node-env.conf" ] && . ~/node-env.conf
         nohup npm run post-receive >> /tmp/t.log 2>&1 &
