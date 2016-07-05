@@ -30,3 +30,21 @@ chmod a+x $file
 
 echo '[receive]' >> $gdir/.git/config
 echo '          denyCurrentBranch=false' >> $gdir/.git/config
+
+###########
+file=$gdir/.git/hooks/pre-push
+
+cat > $file << EOF
+#!/bin/bash
+
+while read local_ref local_sha remote_ref remote_sha
+do
+    cd $cdir
+    npm run pre-push || exit 1
+done
+
+exit 0
+EOF
+
+chmod a+x $file
+
