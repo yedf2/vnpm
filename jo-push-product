@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+git checkout test &&
+git pull test test && git checkout product && git pull product product && git merge test && git push product product && #最新test并入product
+git checkout test && git merge product && git push test test && git checkout master #product并回test

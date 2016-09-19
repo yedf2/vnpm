@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+git pull origin master && git push origin master && git checkout test && #拉取最新master进入test
+git pull test test && git merge master && git push test test && #master并入test
+git checkout master && git merge test && git push origin master #test并回master
