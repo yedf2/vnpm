@@ -28,7 +28,6 @@ chmod a+x $file
 ###########
 repo=`basename $cdir`
 
-git remote add product root@media.jimob.com.cn:/jo/$repo > /dev/null 2>&1
 git remote add test root@media-test.hui8.com.cn:/jo/$repo > /dev/null 2>&1
 git fetch test product && git checkout -b product test/product > /dev/null 2>&1
 git fetch test test && git checkout -b test test/test > /dev/null 2>&1
