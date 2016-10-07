@@ -17,7 +17,7 @@ do
         unset GIT_DIR
         echo \`date '+%Y-%m-%d %H:%M:%S'\` '    deployed    ' \$newrev >> deploy.log 2>&1
         [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-        [ -s "node-env.conf" ] && . ~/node-env.conf
+        [ -s "/etc/node-env.conf" ] && . /etc/node-env.conf
         nohup npm run post-receive >> /tmp/t.log 2>&1 &
 
     else
