@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+jo-setup
+set -x
+git remote add product root@media.jimob.com.cn:/jo/$repo > /dev/null 2>&1
