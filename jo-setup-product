@@ -1,4 +1,12 @@
 #!/usr/bin/env bash
-jo-setup
+jo-setup $1 || exit 1
 set -x
+
+[ x$1 == x ] || cd $1
+cdir=`pwd`
+repo=`basename $cdir`
+
+
 git remote add product root@media.jimob.com.cn:/jo/$repo > /dev/null 2>&1
+git fetch product product && git checkout -b product product/product > /dev/null 2>&1
+git branch -u product/product product
