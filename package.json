@@ -1,9 +1,10 @@
 {
     "name": "vnpm",
-    "version": "1.0.26",
+    "version": "1.0.29",
     "description": "version publish for npm, sync ali mirror",
     "main": "./vnpm.js",
     "bin": {
+        "awkj": "./awkj",
         "vnpm": "./vnpm",
         "cd-run": "./cd-run",
         "watch-run": "./watch-run",
