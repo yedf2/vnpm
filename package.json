@@ -1,13 +1,13 @@
 {
     "name": "vnpm",
-    "version": "1.0.29",
+    "version": "1.0.36",
     "description": "version publish for npm, sync ali mirror",
     "main": "./vnpm.js",
     "bin": {
-        "awkj": "./awkj",
         "vnpm": "./vnpm",
         "cd-run": "./cd-run",
         "watch-run": "./watch-run",
+        "ivy-setup": "./ivy-setup",
         "jo-setup": "./jo-setup",
         "jo-setup-product": "./jo-setup-product",
         "jo-push-product": "./jo-push-product",
@@ -22,7 +22,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/yedf/rest-mysql.git"
+        "url": "git+https://github.com/yedf/vnpm.git"
     },
     "keywords": [
         "version",
