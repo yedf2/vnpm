@@ -1,17 +1,12 @@
 {
     "name": "vnpm",
-    "version": "1.0.36",
+    "version": "1.0.42",
     "description": "version publish for npm, sync ali mirror",
     "main": "./vnpm.js",
     "bin": {
         "vnpm": "./vnpm",
-        "cd-run": "./cd-run",
-        "watch-run": "./watch-run",
         "ivy-setup": "./ivy-setup",
-        "jo-setup": "./jo-setup",
-        "jo-setup-product": "./jo-setup-product",
-        "jo-push-product": "./jo-push-product",
-        "jo-push-test": "./jo-push-test",
+        "setup-post-receive-all": "./setup-post-receive-all",
         "setup-post-receive": "./setup-post-receive"
     },
     "files": [

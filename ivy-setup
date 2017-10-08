@@ -11,30 +11,32 @@ cdir=`pwd`
 gdir=$cdir
 
 ###########
-file=$gdir/.git/hooks/pre-push
+# file=$gdir/.git/hooks/pre-push
 
-cat > $file << EOF
-#!/bin/bash
+# cat > $file << EOF
+# #!/bin/bash
 
-while read local_ref local_sha remote_ref remote_sha
-do
-    cd $cdir
-    if [ -e package.json ]; then
-      npm run | grep pre-push && npm run pre-push || exit 0      
-    fi
-done
+# while read local_ref local_sha remote_ref remote_sha
+# do
+#     cd $cdir
+#     if [ -e package.json ]; then
+#       npm run | grep pre-push && npm run pre-push || exit 0      
+#     fi
+# done
 
-exit 0
-EOF
+# exit 0
+# EOF
 
-chmod a+x $file
+# chmod a+x $file
 
 ###########
+npm run | grep setup && npm run setup || exit 0
 repo=`basename $cdir`
 
 git remote add production $loc_production/$repo > /dev/null 2>&1
 git remote set-url production $loc_production/$repo
 git fetch production master && git checkout -b master production/master > /dev/null 2>&1
+git branch -u production/master
 
 git remote add w1 $loc_production/$repo > /dev/null 2>&1
 git remote set-url w1 $loc_production/$repo
@@ -46,3 +48,4 @@ git remote add test $loc_test/$repo > /dev/null 2>&1
 git remote set-url test $loc_test/$repo
 git fetch test test && git checkout -b test test/test > /dev/null 2>&1
 git checkout test
+git branch -u test/test
