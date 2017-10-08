@@ -1,0 +1,5 @@
+#bash
+for dir in `ls`
+do
+  cd $dir; setup-post-receive $1; cd ..
+done
