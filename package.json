@@ -1,6 +1,6 @@
 {
     "name": "vnpm",
-    "version": "1.0.42",
+    "version": "1.0.48",
     "description": "version publish for npm, sync ali mirror",
     "main": "./vnpm.js",
     "bin": {
