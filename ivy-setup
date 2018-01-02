@@ -61,6 +61,7 @@ git checkout test
 git branch -u test/test
 
 git checkout -b master > /dev/null 2>&1
+git fetch production master > /dev/null 2>&1
 git branch -u production/master
 
 git checkout test
