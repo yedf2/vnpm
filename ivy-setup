@@ -6,12 +6,18 @@ loc_w1=root@a-w1.ivydad.com:/ivy
 loc_w2=root@a-w2.ivydad.com:/ivy
 loc_gitlab=git@gitlab.ivydad.com:ivy
 
-if [ ! -e .git ]; then
-  [ x$1 == x ] && echo '请输入git仓库名' && exit 1
+
+if [ x$1 != x ]; then
+  repo=$1
   git clone $loc_test/$1 && cd $1 || exit 1
+elif [ -e .git ]; then
+  cdir=`pwd`
+  repo=`basename $cdir`
+else
+  echo '请输入git仓库名' && exit 1
 fi
+
 cdir=`pwd`
-gdir=$cdir
 
 ###########
 # file=$gdir/.git/hooks/pre-push
@@ -34,12 +40,9 @@ gdir=$cdir
 
 ###########
 npm run | grep setup && npm run setup
-repo=`basename $cdir`
 
 git remote add production $loc_production/$repo > /dev/null 2>&1
 git remote set-url production $loc_production/$repo
-git fetch production master && git checkout -b master production/master > /dev/null 2>&1
-git branch -u production/master
 
 git remote add w1 $loc_w1/$repo > /dev/null 2>&1
 git remote set-url w1 $loc_w1/$repo
@@ -49,9 +52,15 @@ git remote set-url w2 $loc_w2/$repo
 
 git remote add test $loc_test/$repo > /dev/null 2>&1
 git remote set-url test $loc_test/$repo
+
+git remote add gitlab $loc_gitlab/$repo.git > /dev/null 2>&1
+git remote set-url gitlab $loc_gitlab/$repo.git
+
 git fetch test test && git checkout -b test test/test > /dev/null 2>&1
 git checkout test
 git branch -u test/test
 
-git remote add gitlab $loc_gitlab/$repo.git > /dev/null 2>&1
-git remote set-url gitlab $loc_gitlab/$repo.git
+git checkout -b master > /dev/null 2>&1
+git branch -u production/master
+
+git checkout test

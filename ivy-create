@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -x
+
+[ x$1 == x ] && echo '当前不是一个git仓库' && exit 1
+repo=$1
+
+echo "mkdir -p /ivy/$repo; cd /ivy/$repo; git init; setup-post-receive test" | ssh root@passport.ivydad.com.cn
+echo "mkdir -p /ivy/$repo; cd /ivy/$repo; git init; setup-post-receive" | ssh root@passport.ivydad.com
+echo "mkdir -p /ivy/$repo; cd /ivy/$repo; git init; setup-post-receive" | ssh root@a-w2.ivydad.com

@@ -1,11 +1,12 @@
 {
     "name": "vnpm",
-    "version": "1.0.48",
+    "version": "1.0.49",
     "description": "version publish for npm, sync ali mirror",
     "main": "./vnpm.js",
     "bin": {
         "vnpm": "./vnpm",
         "ivy-setup": "./ivy-setup",
+        "ivy-create": "./ivy-create",
         "setup-post-receive-all": "./setup-post-receive-all",
         "setup-post-receive": "./setup-post-receive"
     },
