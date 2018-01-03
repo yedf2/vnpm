@@ -56,11 +56,13 @@ git remote set-url test $loc_test/$repo
 git remote add gitlab $loc_gitlab/$repo.git > /dev/null 2>&1
 git remote set-url gitlab $loc_gitlab/$repo.git
 
-git fetch test test && git checkout -b test test/test > /dev/null 2>&1
+git checkout -b test > /dev/null 2>&1
 git checkout test
+git fetch test test > /dev/null 2>&1
 git branch -u test/test
 
 git checkout -b master > /dev/null 2>&1
+git checkout master
 git fetch production master > /dev/null 2>&1
 git branch -u production/master
 
