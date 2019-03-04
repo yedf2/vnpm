@@ -15,7 +15,7 @@ do
         git --work-tree=$gdir checkout -f
         cd $cdir;
         unset GIT_DIR
-        echo \`date '+%Y-%m-%d %H:%M:%S'\` '    deployed    ' \`git log -n 1 HEAD --pretty=format:'版本:%h 时间: %ad 作者:%an 注释:%s' --date=iso\` >> deploy.log 2>&1
+        echo \`date '+%Y-%m-%d %H:%M:%S'\` '    deployed    ' \`git log -n 1 HEAD --pretty=format:'版本: %h 时间: %ad 作者:%an 注释:%s' --date=iso\` >> deploy.log 2>&1
         [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
         [ -s "package.json" ] && NODE_ENV="dev" yarn install && npm run post-receive
 

@@ -1,0 +1,3 @@
+set -x
+git push w1 master
+git push w2 master
