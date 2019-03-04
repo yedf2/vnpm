@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+set -x
+
+if [ x$1 != x ]; then
+  repo=$1
+  git clone $loc_test/$1 $1; cd $1
+elif [ -e .git ]; then
+  cdir=`pwd`
+  repo=`basename $cdir`
+else
+  echo '请输入git仓库名' && exit 1
+fi
+
+cdir=`pwd`
+
+###########
+# file=$gdir/.git/hooks/pre-push
+
+# cat > $file << EOF
+# #!/bin/bash
+
+# while read local_ref local_sha remote_ref remote_sha
+# do
+#     cd $cdir
+#     if [ -e package.json ]; then
+#       npm run | grep pre-push && npm run pre-push || exit 0      
+#     fi
+# done
+
+# exit 0
+# EOF
+
+# chmod a+x $file
+
+###########
+npm run | grep setup && npm run setup
+
+for h in w1 w11 w12 w2 w21 dav
+do
+  git remote add $h root@a-$h.ivydad.com:ivy/$repo > /dev/null 2>&1
+  git remote set-url $h root@a-$h.ivydad.com:/ivy/repo
+done
+
+git remote add test root@passport.ivydad.com.cn:/ivy/$repo > /dev/null 2>&1
+git remote set-url test root@passport.ivydad.com.cn:/ivy/$repo
+git remote add gitlab git@gitlab.ivydad.com:ivy/$repo > /dev/null 2>&1
+git remote set-url gitlab git@gitlab.ivydad.com:ivy/$repo
+
+git checkout -b test > /dev/null 2>&1
+git checkout test
+git fetch test test > /dev/null 2>&1
+git branch -u test/test
+
+git checkout -b master > /dev/null 2>&1
+git checkout master
+git fetch w1 master > /dev/null 2>&1
+
+git checkout test
