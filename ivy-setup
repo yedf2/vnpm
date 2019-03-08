@@ -1,0 +1,2 @@
+set -x
+echo please use ivy-setup-service | ivy-setup-web | ivy-setup-admin
