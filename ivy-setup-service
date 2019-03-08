@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 set -x
 
+test=root@passport.ivydad.com.cn
+
 if [ x$1 != x ]; then
   repo=$1
-  git clone $loc_test/$1 $1; cd $1
+  git clone $test/$1 $1; cd $1
 elif [ -e .git ]; then
   cdir=`pwd`
   repo=`basename $cdir`
@@ -41,8 +43,8 @@ do
   git remote set-url $h root@a-$h.ivydad.com:/ivy/repo
 done
 
-git remote add test root@passport.ivydad.com.cn:/ivy/$repo > /dev/null 2>&1
-git remote set-url test root@passport.ivydad.com.cn:/ivy/$repo
+git remote add test $test:/ivy/$repo > /dev/null 2>&1
+git remote set-url test $test:/ivy/$repo
 git remote add gitlab git@gitlab.ivydad.com:ivy/$repo > /dev/null 2>&1
 git remote set-url gitlab git@gitlab.ivydad.com:ivy/$repo
 
