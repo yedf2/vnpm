@@ -10,6 +10,7 @@
         "ivy-setup-service": "./ivy-setup-service",
         "ivy-create": "./ivy-create",
         "ivy-deploy": "./ivy-deploy",
+        "ivy-setup": "./ivy-setup",
         "setup-post-receive-all": "./setup-post-receive-all",
         "setup-post-receive": "./setup-post-receive"
     },
