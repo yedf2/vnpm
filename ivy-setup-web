@@ -5,7 +5,7 @@ test=root@passport.ivydad.com.cn
 
 if [ x$1 != x ]; then
   repo=$1
-  git clone $test:ivy/$1 $1; cd $1
+  git clone $test:/ivy/$1 $1; cd $1
 elif [ -e .git ]; then
   cdir=`pwd`
   repo=`basename $cdir`
@@ -39,7 +39,7 @@ npm run | grep setup && npm run setup
 
 for h in w1 w2
 do
-  git remote add $h root@a-$h.ivydad.com:ivy/$repo > /dev/null 2>&1
+  git remote add $h root@a-$h.ivydad.com:/ivy/$repo > /dev/null 2>&1
   git remote set-url $h root@a-$h.ivydad.com:/ivy/repo
 done
 
