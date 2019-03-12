@@ -40,7 +40,7 @@ npm run | grep setup && npm run setup
 for h in w1 w2
 do
   git remote add $h root@a-$h.ivydad.com:/ivy/$repo > /dev/null 2>&1
-  git remote set-url $h root@a-$h.ivydad.com:/ivy/repo
+  git remote set-url $h root@a-$h.ivydad.com:/ivy/$repo
 done
 
 git remote add test $test:/ivy/$repo > /dev/null 2>&1
